@@ -1,0 +1,46 @@
+@use "./mixins.scss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  @include mixins.flex;
+  min-height: 100vh;
+  background: lightblue;
+}
+
+.wrapper {
+  height: 270px;
+  width: 400px;
+  background: white;
+  border-radius: 10px;
+}
+
+.cards {
+  height: 100%;
+  width: 100%;
+  flex-wrap: wrap;
+  @include mixins.flex;
+}
+
+.card {
+  @include mixins.flex;
+  height: calc(100% / 3 - 10px);
+  width: calc(100% / 4 - 10px);
+
+  &__view {
+    @include mixins.flex;
+
+    &--back img {
+      max-width: 45px;
+    }
+    &--front {
+      display: none;
+    }
+  }
+}

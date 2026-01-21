@@ -96,8 +96,8 @@
    - [ ] Hide win message
    - [ ] Build deck → shuffle → render
 - [ ] Card click handler
-   - [ ] Ignore the click if the game is already won, the card is already,flipped or already matched
-   - [ ] Start the timer on the first valid card flip
+   - [ ] Ignore the click if the game is already won, the card is already, flipped or already matched
+   - [ ] Start the timer on the first valid card flip.
    - [ ] Flip the selected card face up
    - [ ] Increase the flip counter
    - [ ] If this is the first card store it and wait
