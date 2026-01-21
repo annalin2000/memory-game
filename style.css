@@ -61,16 +61,14 @@ body {
 .card__view--back {
   transform: rotateY(-180deg);
 }
-.card__image {
-  max-width: 45px;
-}
-
-.card:hover .card__view--front {
+.card.flip .card__view--front {
   transform: rotateY(180deg);
 }
-
-.card:hover .card__view--back {
+.card.flip .card__view--back {
   transform: rotateY(0deg);
+}
+.card__image {
+  max-width: 45px;
 }
 
 .material-icons {

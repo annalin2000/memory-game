@@ -57,17 +57,19 @@ body {
     }
   }
 
+  &.flip {
+    .card__view--front {
+      transform: rotateY(180deg);
+    }
+
+    .card__view--back {
+      transform: rotateY(0deg);
+    }
+  }
+
   &__image {
     max-width: 45px;
   }
-}
-
-.card:hover .card__view--front {
-  transform: rotateY(180deg);
-}
-
-.card:hover .card__view--back {
-  transform: rotateY(0deg);
 }
 
 .material-icons {
