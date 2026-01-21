@@ -17,23 +17,29 @@ body {
 .wrapper {
   height: 270px;
   width: 400px;
+  padding: 25px;
   background: white;
   border-radius: 10px;
 }
 
 .cards {
-  height: 100%;
-  width: 100%;
-  flex-wrap: wrap;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .card {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  position: relative;
+  perspective: 800px;
+  transform-style: preserve-3d;
   height: calc(33.3333333333% - 10px);
   width: calc(25% - 10px);
 }
@@ -41,10 +47,30 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  background: white;
+  border-radius: 7px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  backface-visibility: hidden;
+  transition: transform 0.25s linear;
 }
-.card__view--back img {
+.card:hover .card__view--front {
+  transform: rotateY(180deg);
+}
+.card__view--back {
+  transform: rotateY(-180deg);
+}
+.card:hover .card__view--back {
+  transform: rotateY(0deg);
+}
+.card__image {
   max-width: 45px;
 }
-.card__view--front {
-  display: none;
+
+.material-icons {
+  color: cornflowerblue;
 }
