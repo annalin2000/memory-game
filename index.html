@@ -4,19 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Card Game</title>
-
-    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=question_mark"
     />
+    <link rel="stylesheet" href="style.css" />
   </head>
+
   <body>
     <div class="wrapper">
       <ul class="cards">
         <li class="card">
           <div class="card__view card__view--front">
-            <span class="material-icons">question_mark</span>
+            <span class="material-symbols-outlined"> question_mark </span>
           </div>
           <div class="card__view card__view--back">
             <img class="card__image" src="images/img-1.png" alt="card-img" />
@@ -25,7 +25,7 @@
 
         <li class="card">
           <div class="card__view card__view--front">
-            <span class="material-icons">question_mark</span>
+            <span class="material-symbols-outlined"> question_mark </span>
           </div>
           <div class="card__view card__view--back">
             <img class="card__image" src="images/img-2.png" alt="card-img" />
@@ -34,7 +34,7 @@
 
         <li class="card">
           <div class="card__view card__view--front">
-            <span class="material-icons">question_mark</span>
+            <span class="material-symbols-outlined">question_mark</span>
           </div>
           <div class="card__view card__view--back">
             <img class="card__image" src="images/img-3.png" alt="card-img" />
@@ -43,7 +43,7 @@
 
         <li class="card">
           <div class="card__view card__view--front">
-            <span class="material-icons">question_mark</span>
+            <span class="material-symbols-outlined">question_mark</span>
           </div>
           <div class="card__view card__view--back">
             <img class="card__image" src="images/img-4.png" alt="card-img" />
@@ -52,7 +52,7 @@
 
         <li class="card">
           <div class="card__view card__view--front">
-            <span class="material-icons">question_mark</span>
+            <span class="material-symbols-outlined">question_mark</span>
           </div>
           <div class="card__view card__view--back">
             <img class="card__image" src="images/img-5.png" alt="card-img" />
@@ -61,15 +61,16 @@
 
         <li class="card">
           <div class="card__view card__view--front">
-            <span class="material-icons">question_mark</span>
+            <span class="material-symbols-outlined">question_mark</span>
           </div>
           <div class="card__view card__view--back">
             <img class="card__image" src="images/img-6.png" alt="card-img" />
           </div>
         </li>
+
         <li class="card">
           <div class="card__view card__view--front">
-            <span class="material-icons">question_mark</span>
+            <span class="material-symbols-outlined">question_mark</span>
           </div>
           <div class="card__view card__view--back">
             <img class="card__image" src="images/img-1.png" alt="card-img" />
@@ -78,7 +79,7 @@
 
         <li class="card">
           <div class="card__view card__view--front">
-            <span class="material-icons">question_mark</span>
+            <span class="material-symbols-outlined">question_mark</span>
           </div>
           <div class="card__view card__view--back">
             <img class="card__image" src="images/img-2.png" alt="card-img" />
@@ -87,7 +88,7 @@
 
         <li class="card">
           <div class="card__view card__view--front">
-            <span class="material-icons">question_mark</span>
+            <span class="material-symbols-outlined">question_mark</span>
           </div>
           <div class="card__view card__view--back">
             <img class="card__image" src="images/img-3.png" alt="card-img" />
@@ -96,7 +97,7 @@
 
         <li class="card">
           <div class="card__view card__view--front">
-            <span class="material-icons">question_mark</span>
+            <span class="material-symbols-outlined">question_mark</span>
           </div>
           <div class="card__view card__view--back">
             <img class="card__image" src="images/img-4.png" alt="card-img" />
@@ -105,7 +106,7 @@
 
         <li class="card">
           <div class="card__view card__view--front">
-            <span class="material-icons">question_mark</span>
+            <span class="material-symbols-outlined">question_mark</span>
           </div>
           <div class="card__view card__view--back">
             <img class="card__image" src="images/img-5.png" alt="card-img" />
@@ -114,7 +115,7 @@
 
         <li class="card">
           <div class="card__view card__view--front">
-            <span class="material-icons">question_mark</span>
+            <span class="material-symbols-outlined">question_mark</span>
           </div>
           <div class="card__view card__view--back">
             <img class="card__image" src="images/img-6.png" alt="card-img" />
@@ -123,18 +124,20 @@
       </ul>
 
       <div class="stats">
-        <p class="stats__item">
-          Time: <span class="stats__item--digit" id="time">0</span>s
-        </p>
-
+        <p class="stats__item">Time: <span class="stats__time">0</span>s</p>
         <div class="stats__divider"></div>
 
-        <p class="stats__item">
-          Flips: <span class="stats__item--digit" id="flips">0</span>
-        </p>
+        <p class="stats__item">Flips: <span class="stats__flips">0</span></p>
         <div class="stats__divider"></div>
 
-        <button id="restart" class="stats__btn" type="button">Restart</button>
+        <button class="stats__restart" type="button">Restart</button>
+      </div>
+
+      <div class="message message--hidden">
+        <div class="message__content">
+          <h2 class="message__text">You win!</h2>
+          <button class="message__button" type="button">Next level</button>
+        </div>
       </div>
     </div>
 
