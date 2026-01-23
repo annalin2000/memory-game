@@ -11,7 +11,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: lightblue;
+  background: rgb(190, 218, 233);
   padding: 16px;
 }
 
@@ -89,6 +89,9 @@ body {
 }
 .card__view--back {
   transform: rotateY(-180deg);
+}
+.card.matched .card__view--back {
+  background: #f5fbff !important;
 }
 .card.shake {
   animation: shake 0.35s ease-in-out;

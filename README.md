@@ -1,115 +1,86 @@
-
 # Memory Game Project
-
 
 # HTML
 
-- [ ] Game wrapper
-    - [ ] Create a main wrapper: section class="game"
-    - [ ] Inside it, include the grid, stats bar, and win message area
-- [ ] Grid container (4 x 3)
-    - [ ] Add a container for cards: div class="game__grid"
-    - [ ] Grid holds 12 card buttons (6 pairs)
-- [ ] Card buttons (12 total)
-    - [ ] Each card is a button for accessibility and easy click handling
-    - [ ] Each card stores a match value (recommended via data-value and data-id)
-    - [ ] Each card contains two faces:
-        - [ ] .card__front (default/hidden state → “?”)
-        - [ ] .card__back (revealed state → emoji)
-- [ ] Stats bar
-    - [ ] Wrapper: div class="stats"
-    - [ ] Time display
-    - [ ] Flips display 
-    - [ ] Restart button
- - [ ] Win message section
-    - [ ] Add a hidden win area
-    - [ ] Show it only when all pairs are matched
--  [ ] Classes & IDs:
-    - [ ] .game
-    - [ ] .game__grid
-    - [ ] .stats
-    - [ ] #time
-    - [ ] #flips
-    - [ ] #restart
-    - [ ] .card__front
-    - [ ] .card__back
-    - [ ] .card--flipped
-    - [ ] .card--matched
-    - [ ] .win
-
+- [x] Game wrapper
+  - [x] Main .wrapper contains the entire game
+  - [x] Wrapper holds cards, stats, and message
+- [x] Card grid
+  - [x] 4 × 3 layout (12 cards total)
+  - [x] Each card appears exactly twice to form 6 pairs
+- [x] Cards
+  - [x] Cards are clickable elements
+  - [x] Each card has two faces:
+    - [x] Front face shows a question mark icon
+    - [x] Back face shows an image
+- [x] Stats bar
+  - [x] Displays remaining time
+  - [x] Displays number of flips
+  - [x] Includes a restart button
+- [x] Message section
+  - [x] Hidden by default
+  - [x] Shown on win or loss
+  - [x] Contains a message and one action button
+  - [x] Button advances to next level or retries the level
 
 # SCSS
 
- -  [ ] Page + game background
-     - [ ] Set body background to dark grey
-     - [ ] Center the .game wrapper on the page
-     - [ ] Add spacing and consistent font size
--  [ ] Grid layout
-    - [ ] 4 columns
-    - [ ] 3 rows
-    - [ ] Gap between cards
--  [ ] Card base style
-    - [ ] Cards are square with rounded corners
-    - [ ] Use border for separation
-    - [ ] Button fills the grid cell
--  [ ] Card faces
-    - [ ] .card__front
-        - [ ] Shows a blue question mark
-        - [ ] Visible by default
-    - [ ] .card__back
-        - [ ] Hidden by default
-        - [ ] Center the emoji
-- [ ] Flipped state
-    - [ ] .card--flipped
-    - [ ] Hide front face
-    - [ ] Show back face
-- [ ] Matched state
-    - [ ] .card--matched
-    - [ ] Light blue background
-    - [ ] Disable pointer events so it can’t be clicked again
-- [ ] Unmatched feedback 
-    - [ ] Add a temporary .card--wrong class
-    - [ ] Red background flash
-    - [ ] Remove after unflipping
-- [ ] Stats bar + win message
-    - [ ] .stats displayed as a row with spacing
-    - [ ] Restart button blue
-    - [ ] .win hidden by default, shown on win
-
+- [x] Page layout
+  - [x] Center the game on the screen
+  - [x] Light blue background
+  - [x] Consistent font across the app
+- [x] Game container
+  - [x] Fixed square layout
+  - [x] Rounded corners and shadow
+  - [x] Responsive sizing
+- [x] Card grid
+  - [x] Flex based 4 × 3 layout
+  - [x] Even spacing between cards
+- [x] Card visuals
+  - [x] Front and back faces stacked
+  - [x] Front face visible by default
+  - [x] Back face hidden until flipped
+  - [x] 3D flip animation on interaction
+- [x] Card states
+  - [x] Flipped cards reveal their image
+  - [x] Wrong matches trigger a shake animation
+  - [x] Matched cards remain revealed and cannot be clickedclicked again
+- [x] Message section
+  - [x] Covers the game area
+  - [x] Centered message box
 
 # JS
 
- - [ ] Define values + build the deck
-    - [ ] Create values = 6 unique emoji
-    - [ ] Duplicate values to form pairs
-    - [ ] Convert into card objects
- - [ ] Shuffle the deck
-   - [ ] Loop from end to start
-- [ ] Render cards into the grid
-- [ ] Event listeners
-   - [ ] Detect if a card button was clicked
-   - [ ] Add click listener to restart the game
-- [ ] Restart the game
-   - [ ] Reset all state variables
-   - [ ] Stop timer and reset time 
-   - [ ] Reset all flips 
-   - [ ] Hide win message
-   - [ ] Build deck → shuffle → render
-- [ ] Card click handler
-   - [ ] Ignore the click if the game is already won, the card is already, flipped or already matched
-   - [ ] Start the timer on the first valid card flip.
-   - [ ] Flip the selected card face up
-   - [ ] Increase the flip counter
-   - [ ] If this is the first card store it and wait
-   - [ ] If this is the second card compare the two cards
-- [ ] Turn resolution
-   - [ ] Compare the two flipped cards
-   - [ ] If they match: mark both as matched, keep them face up
-   - [ ] If they don’t match: briefly show them, then flip both back face down
-- [ ] Win check 
-   - [ ] After every successful match: check if all cards are matched
-   - [ ] If yes: stop the timer, show the win message, prevent further interaction
-- [ ] Timer logic 
-   - [ ] Start counting time on the first card flip
-   - [ ] Increase the time every second
-   - [ ] Stop the timer when the game is won or restarted
+- [x] Game state
+  - [x] Track selected cards per turn
+  - [x] Lock input during animations
+  - [x] Track matched cards
+  - [x] Track flip count
+  - [x] Track current level
+- [x] Timer & difficulty
+  - [x] Countdown timer
+  - [x] Timer starts on first card flip
+  - [x] Time decreases as levels increase
+  - [x] Timer stops on win or loss
+- [x] Card interaction
+  - [x] Ignore clicks when input is locked
+  - [x] Ignore already matched cards
+  - [x] Flip card on click
+  - [x] Store first card selection
+  - [x] Compare cards after second selection
+- [x] Turn resolution
+  - [x] Matching cards stay face up
+  - [x] Non-matching cards briefly reveal, then flip back
+  - [x] Input remains locked during mismatch delay
+  - [x] Sound feedback for matches and mistakes
+- [x] Win & lose logic
+  - [x] Win detected when all pairs are matched
+  - [x] Timer stops on win
+  - [x] Win message shows “Next Level”
+  - [x] Loss detected when time reaches zero
+  - [x] Loss message shows “Retry Level”
+- [x] Restart & progression
+  - [x] Restart resets all game state
+  - [x] Cards reshuffle each level
+  - [x] Timer recalculates per level
+  - [x] Game can restart or advance without refreshing the page

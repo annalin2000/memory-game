@@ -12,7 +12,7 @@
 body {
   @include mixins.flex;
   min-height: 100vh;
-  background: lightblue;
+  background: rgb(190, 218, 233);
   padding: 16px;
 }
 
@@ -81,6 +81,12 @@ body {
 
     &--back {
       transform: rotateY(-180deg);
+    }
+  }
+
+  &.matched {
+    .card__view--back {
+      background: #f5fbff !important;
     }
   }
 
