@@ -276,3 +276,7 @@ body {
     cursor: pointer;
   }
 }
+
+.card.matched {
+  pointer-events: none;
+}
