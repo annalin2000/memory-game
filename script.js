@@ -3,11 +3,16 @@ const cards = document.querySelectorAll(".card");
 let cardOne = null;
 let cardTwo = null;
 let disableDeck = false;
+let matchedCount = 0;
 
 function resetTurn() {
   cardOne = null;
   cardTwo = null;
   disableDeck = false;
+}
+
+function winGame() {
+  alert("You win!");
 }
 
 function flipCard(e) {
@@ -33,7 +38,11 @@ function flipCard(e) {
   if (img1 === img2) {
     cardOne.classList.add("matched");
     cardTwo.classList.add("matched");
+
+    matchedCount += 2;
     resetTurn();
+
+    if (matchedCount === cards.length) winGame();
   } else {
     setTimeout(() => {
       cardOne.classList.remove("flip");
