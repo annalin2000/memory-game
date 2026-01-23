@@ -151,9 +151,9 @@ body {
   box-shadow: 0 3px 10px rgb(0, 0, 0, 0.1);
 
   &__item {
-    font-size: 15px;
+    font-size: 14px;
     color: black;
-    padding: 6px;
+    padding: 5px;
 
     @include media.tablet {
       font-size: 15px;

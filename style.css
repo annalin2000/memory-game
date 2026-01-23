@@ -155,9 +155,9 @@ body {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 .stats__item {
-  font-size: 15px;
+  font-size: 14px;
   color: black;
-  padding: 6px;
+  padding: 5px;
 }
 @media only screen and (min-width: 576px) and (max-width: 768px) {
   .stats__item {
