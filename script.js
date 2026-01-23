@@ -2,10 +2,21 @@ const cards = document.querySelectorAll(".card");
 
 const time = document.querySelector(".stats__time");
 const flip = document.querySelector(".stats__flips");
+const restartBtn = document.querySelector(".stats__restart");
 
 const message = document.querySelector(".message");
 const messageText = document.querySelector(".message__text");
 const messageBtn = document.querySelector(".message__button");
+
+const matchSound = new Audio("sounds/matchSound.mp3");
+const wrongSound = new Audio("sounds/wrongSound.mp3");
+const winSound = new Audio("sounds/winSound.mp3");
+const loseSound = new Audio("sounds/loseSound.mp3");
+
+matchSound.volume = 1;
+wrongSound.volume = 0.8;
+winSound.volume = 1;
+loseSound.volume = 1;
 
 let cardOne = null;
 let cardTwo = null;
@@ -61,18 +72,58 @@ function resetTurn() {
   disableDeck = false;
 }
 
+function shuffleCards() {
+  const order = [...Array(cards.length).keys()];
+
+  for (let i = order.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [order[i], order[j]] = [order[j], order[i]];
+  }
+
+  cards.forEach((card, index) => {
+    card.style.order = order[index];
+  });
+}
+
+function restartLevel(lvl) {
+  level = lvl;
+  matchedCount = 0;
+  flips = 0;
+  gameStarted = false;
+
+  stopTimer();
+  resetTurn();
+
+  timeLeft = getTimeForLevel(level);
+  time.textContent = timeLeft;
+  flip.textContent = flips;
+
+  hideMessage();
+  shuffleCards();
+
+  cards.forEach((card) => {
+    card.classList.remove("flip", "shake", "matched");
+  });
+}
+
 function winGame() {
   stopTimer();
   disableDeck = true;
 
-  showMessage(`🎉 you won level ${level}!`, "ok");
+  winSound.currentTime = 0;
+  winSound.play();
+
+  showMessage(`🎉 You Won Level ${level}!`, "Next Level");
 }
 
 function loseGame() {
   stopTimer();
   disableDeck = true;
 
-  showMessage("⏰ time’s up! you lost", "ok");
+  loseSound.currentTime = 0;
+  loseSound.play();
+
+  showMessage("⏰ Time’s Up! You Lost", "Retry Level");
 }
 
 function flipCard(e) {
@@ -107,6 +158,9 @@ function flipCard(e) {
 
 function matchCards(img1, img2) {
   if (img1 === img2) {
+    matchSound.currentTime = 0;
+    matchSound.play();
+
     cardOne.classList.add("matched");
     cardTwo.classList.add("matched");
 
@@ -118,6 +172,9 @@ function matchCards(img1, img2) {
     }
     return;
   }
+
+  wrongSound.currentTime = 0;
+  wrongSound.play();
 
   cardOne.classList.add("shake");
   cardTwo.classList.add("shake");
@@ -131,6 +188,18 @@ function matchCards(img1, img2) {
 
 cards.forEach((card) => card.addEventListener("click", flipCard));
 
-messageBtn.addEventListener("click", () => {
-  hideMessage();
+restartBtn.addEventListener("click", () => {
+  restartLevel(1);
 });
+
+messageBtn.addEventListener("click", () => {
+  const label = messageBtn.textContent.toLowerCase();
+
+  if (label.includes("retry")) {
+    restartLevel(level);
+  } else {
+    restartLevel(level + 1);
+  }
+});
+
+restartLevel(1);
