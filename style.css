@@ -288,7 +288,3 @@ body {
   font-size: 15px;
   cursor: pointer;
 }
-
-.card.matched {
-  pointer-events: none;
-}
