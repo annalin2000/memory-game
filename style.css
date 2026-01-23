@@ -12,11 +12,12 @@ body {
   justify-content: center;
   min-height: 100vh;
   background: lightblue;
+  padding: 16px;
 }
 
 .wrapper {
-  height: 400px;
-  width: 400px;
+  width: min(92vw, 400px);
+  height: min(92vw, 400px);
   padding: 25px 25px 40px 25px;
   background: white;
   border-radius: 10px;
@@ -135,7 +136,7 @@ body {
 }
 @media only screen and (min-width: 993px) and (max-width: 1200px) {
   .material-symbols-outlined {
-    font-size: 30x;
+    font-size: 30px;
   }
 }
 @media only screen and (min-width: 1201px) {
