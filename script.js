@@ -120,7 +120,7 @@ function winGame() {
   winSound.currentTime = 0;
   winSound.play();
 
-  showMessage(`🎉 Level ${level} Complete!`, "Next Level");
+  showMessage(`🎉 Level ${level} Completed!`, "Next Level");
 }
 
 function loseGame() {
