@@ -40,7 +40,7 @@ function getTimeForLevel(lvl) {
 
 function updateLevelText() {
   if (level === totalLevels) {
-    levelText.textContent = "Final Level";
+    levelText.textContent = "Final";
   } else {
     levelText.textContent = `${level}/${totalLevels}`;
   }
