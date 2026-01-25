@@ -188,7 +188,7 @@ function checkMatch(img1, img2) {
     cardOne.classList.remove("shake", "flip");
     cardTwo.classList.remove("shake", "flip");
     resetTurn();
-  }, 200);
+  }, 300);
 }
 
 cards.forEach((card) => {
