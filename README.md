@@ -1,6 +1,24 @@
-# Memory Game Project
+# 🧠 Memory Card Game
 
-# HTML
+A Memory Card Game built with HTML, SCSS, and JavaScript. The goal is to match all card pairs before the timer runs out. Each level increases difficulty by reducing the available time.
+<br>
+
+## 🎮 Game Features
+
+- 12 cards arranged in a 4 × 3 grid
+- 6 matching pairs per level
+- Level based progression system
+- Countdown timer with increasing difficulty
+- Flip counter to track player moves
+- Smooth 3D card flip animations
+- Sound effects for matches and mistakes
+- Win and loss overlays with clear actions
+- Restart or advance levels without refreshing the page
+  <br>
+
+## Pseudocode
+
+<u>HTML</u>
 
 - [x] Game wrapper
   - [x] Main .wrapper contains the entire game
@@ -23,7 +41,7 @@
   - [x] Contains a message and one action button
   - [x] Button advances to next level or retries the level
 
-# SCSS
+<u>SCSS</u>
 
 - [x] Page layout
   - [x] Center the game on the screen
@@ -49,7 +67,7 @@
   - [x] Covers the game area
   - [x] Centered message box
 
-# JS
+<u>JS</u>
 
 - [x] Game state
   - [x] Track selected cards per turn
