@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap");
 :root {
   --brand: #5a7cff;
   --brand-2: #7aa6ff;
@@ -13,7 +13,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 
 body {
@@ -22,55 +22,35 @@ body {
   justify-content: center;
   min-height: 100vh;
   padding: 16px;
+  font-size: 14px;
+  line-height: 1.3;
   color: var(--text);
   background: radial-gradient(900px 600px at 12% 10%, rgba(90, 124, 255, 0.22), transparent 55%), radial-gradient(700px 500px at 86% 18%, rgba(122, 166, 255, 0.18), transparent 60%), linear-gradient(180deg, var(--bg-1), var(--bg-2));
 }
 
 .wrapper {
-  width: min(92vw, 400px);
-  height: min(92vw, 400px);
-  padding: 22px 22px 34px 22px;
-  border-radius: 18px;
+  width: min(92vw, 480px);
+  aspect-ratio: 1/1;
+  padding: 18px;
+  border-radius: 16px;
   position: relative;
+  display: flex;
+  flex-direction: column;
   background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.55);
   box-shadow: 0 22px 60px rgba(15, 23, 42, 0.12), 0 6px 18px rgba(15, 23, 42, 0.06);
-}
-@media only screen and (min-width: 576px) and (max-width: 768px) {
-  .wrapper {
-    width: 420px;
-    height: 420px;
-  }
-}
-@media only screen and (min-width: 769px) and (max-width: 992px) {
-  .wrapper {
-    width: 440px;
-    height: 440px;
-  }
-}
-@media only screen and (min-width: 993px) and (max-width: 1200px) {
-  .wrapper {
-    width: 460px;
-    height: 460px;
-  }
-}
-@media only screen and (min-width: 1201px) {
-  .wrapper {
-    width: 480px;
-    height: 480px;
-  }
 }
 
 .cards {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 75%;
+  flex: 4;
   width: 100%;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 10px;
+  gap: 14px;
 }
 
 .card {
@@ -81,8 +61,10 @@ body {
   position: relative;
   perspective: 800px;
   transform-style: preserve-3d;
-  height: calc(33.3333333333% - 10px);
-  width: calc(25% - 10px);
+  height: calc((100% - 28px) / 3);
+  width: calc((100% - 42px) / 4);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 .card__view {
   display: flex;
@@ -97,8 +79,10 @@ body {
   border-radius: 7px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   backface-visibility: hidden;
-  transition: transform 0.1s linear .card__view --front;
-  transition-transform: rotateY(0deg);
+  transition: transform 0.1s linear;
+}
+.card__view--front {
+  transform: rotateY(0deg);
 }
 .card__view--back {
   transform: rotateY(-180deg);
@@ -160,23 +144,30 @@ body {
 }
 
 .stats {
-  margin-top: 16px;
+  margin-top: 8px;
   background: white;
   border-radius: 12px;
-  padding: 24px;
+  padding: 8px 12px;
   display: flex;
+  flex: 1;
+  min-height: 48px;
   align-items: center;
-  gap: 16px;
+  justify-content: space-around;
+  gap: 8px;
+  flex-wrap: nowrap;
+  width: 100%;
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 .stats__item {
-  font-size: 14px;
+  font-size: 15px;
+  letter-spacing: 0.2px;
   color: black;
-  padding: 4px;
+  padding: 3px;
+  justify-content: space-around;
 }
 @media only screen and (min-width: 576px) and (max-width: 768px) {
   .stats__item {
-    font-size: 15px;
+    font-size: 16px;
     padding: 5px;
   }
 }
@@ -198,7 +189,7 @@ body {
     padding: 8px;
   }
 }
-.stats__time, .stats__flips {
+.stats__time, .stats__level {
   font-weight: 600;
 }
 .stats__divider {
@@ -231,7 +222,6 @@ body {
   }
 }
 .stats__restart {
-  margin: auto;
   font-size: 15px;
   padding: 8px 20px;
   border-radius: 10px;
@@ -244,7 +234,7 @@ body {
 }
 @media only screen and (min-width: 576px) and (max-width: 768px) {
   .stats__restart {
-    font-size: 15px;
+    font-size: 16px;
     padding: 8px 20px;
   }
 }
@@ -256,13 +246,13 @@ body {
 }
 @media only screen and (min-width: 993px) and (max-width: 1200px) {
   .stats__restart {
-    font-size: 16px;
+    font-size: 17px;
     padding: 9px 21px;
   }
 }
 @media only screen and (min-width: 1201px) {
   .stats__restart {
-    font-size: 17px;
+    font-size: 18px;
     padding: 10px 22px;
   }
 }

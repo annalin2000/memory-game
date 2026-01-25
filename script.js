@@ -1,7 +1,7 @@
 const cards = document.querySelectorAll(".card");
 
 const time = document.querySelector(".stats__time");
-const flip = document.querySelector(".stats__flips");
+const levelText = document.querySelector(".stats__level");
 const restartBtn = document.querySelector(".stats__restart");
 
 const message = document.querySelector(".message");
@@ -23,8 +23,8 @@ let cardTwo = null;
 let disableDeck = false;
 let matchedCount = 0;
 
-let flips = 0;
 let level = 1;
+const totalLevels = 5;
 
 const startTime = 30;
 const decreaseBy = 5;
@@ -36,6 +36,14 @@ let gameStarted = false;
 
 function getTimeForLevel(lvl) {
   return Math.max(startTime - (lvl - 1) * decreaseBy, minTime);
+}
+
+function updateLevelText() {
+  if (level === totalLevels) {
+    levelText.textContent = "Final Level";
+  } else {
+    levelText.textContent = `${level}/${totalLevels}`;
+  }
 }
 
 function startTimer() {
@@ -88,7 +96,6 @@ function shuffleCards() {
 function restartLevel(lvl) {
   level = lvl;
   matchedCount = 0;
-  flips = 0;
   gameStarted = false;
 
   stopTimer();
@@ -96,7 +103,7 @@ function restartLevel(lvl) {
 
   timeLeft = getTimeForLevel(level);
   time.textContent = timeLeft;
-  flip.textContent = flips;
+  updateLevelText();
 
   hideMessage();
   shuffleCards();
@@ -113,7 +120,7 @@ function winGame() {
   winSound.currentTime = 0;
   winSound.play();
 
-  showMessage(`🎉 You Won Level ${level}!`, "Next Level");
+  showMessage(`🎉 Level ${level} Complete!`, "Next Level");
 }
 
 function loseGame() {
@@ -123,7 +130,7 @@ function loseGame() {
   loseSound.currentTime = 0;
   loseSound.play();
 
-  showMessage("⏰ Time’s Up! You Lost", "Retry Level");
+  showMessage("⏰ Time’s Up!", "Retry Level");
 }
 
 function flipCard(e) {
@@ -139,8 +146,6 @@ function flipCard(e) {
   }
 
   clickedCard.classList.add("flip");
-  flips++;
-  flip.textContent = flips;
 
   if (!cardOne) {
     cardOne = clickedCard;
@@ -153,10 +158,10 @@ function flipCard(e) {
   const img1 = cardOne.querySelector("img").src;
   const img2 = cardTwo.querySelector("img").src;
 
-  matchCards(img1, img2);
+  checkMatch(img1, img2);
 }
 
-function matchCards(img1, img2) {
+function checkMatch(img1, img2) {
   if (img1 === img2) {
     matchSound.currentTime = 0;
     matchSound.play();
@@ -183,22 +188,27 @@ function matchCards(img1, img2) {
     cardOne.classList.remove("shake", "flip");
     cardTwo.classList.remove("shake", "flip");
     resetTurn();
-  }, 700);
+  }, 200);
 }
 
-cards.forEach((card) => card.addEventListener("click", flipCard));
+cards.forEach((card) => {
+  card.addEventListener("pointerdown", flipCard);
+});
 
 restartBtn.addEventListener("click", () => {
   restartLevel(1);
 });
 
 messageBtn.addEventListener("click", () => {
-  const label = messageBtn.textContent.toLowerCase();
-
-  if (label.includes("retry")) {
+  if (
+    level === totalLevels &&
+    !messageBtn.textContent.toLowerCase().includes("retry")
+  ) {
+    restartLevel(1);
+  } else if (messageBtn.textContent.toLowerCase().includes("retry")) {
     restartLevel(level);
   } else {
-    restartLevel(level + 1);
+    restartLevel(Math.min(level + 1, totalLevels));
   }
 });
 
