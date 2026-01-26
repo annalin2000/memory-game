@@ -192,7 +192,7 @@ function checkMatch(img1, img2) {
 }
 
 cards.forEach((card) => {
-  card.addEventListener("pointerdown", flipCard);
+  card.addEventListener("click", flipCard);
 });
 
 restartBtn.addEventListener("click", () => {
