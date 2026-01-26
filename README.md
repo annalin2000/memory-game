@@ -102,3 +102,8 @@ A Memory Card Game built with HTML, SCSS, and JavaScript. The goal is to match a
   - [x] Cards reshuffle each level
   - [x] Timer recalculates per level
   - [x] Game can restart or advance without refreshing the page
+
+## 🔗 Live Demo
+
+You can see the site live at: https://annalin2000.github.io/memory-game/
+
